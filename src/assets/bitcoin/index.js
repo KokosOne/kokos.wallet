@@ -112,7 +112,7 @@ function define(options){
                         .then(function(fees){
                             
                             var neededFee = fees.fee;
-                           // console.log(neededFee,"<<FEE");
+                     
                             totalChange = totalChange.minus(neededFee);
                             var amount = new BigNumber(info.value);
                             if(subtractFee){
@@ -126,7 +126,7 @@ function define(options){
                                 
                             }
                             if(totalChange.isLessThanOrEqualTo(0)){
-                                console.log("no change left "+totalChange.toString());
+                        //        console.log("no change left "+totalChange.toString());
                             }else{
                                 txOuts.push([changeAddress, totalChange.integerValue().toString()]);
                             }
@@ -151,7 +151,6 @@ function define(options){
     
     function signWithPrivateKey(tx, from){
         return new Promise(function(resolve, reject){
-            //  console.log("transaction", tx);
             var kp = getKeyPair(from.node.privateKey, from.network);
             kp.network = getNetworkConf(from.network);
             for(var i = 0; i < tx.__tx.ins.length; i++){
@@ -163,9 +162,7 @@ function define(options){
     }
     function sender(from, tx){
         return new Promise(function(resolve, reject){
-            //    console.log(tx);
             interact[from.network].pushTx(tx).then(resolve).catch(reject);
-            
         });
     }
     

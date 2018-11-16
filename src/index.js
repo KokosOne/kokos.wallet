@@ -36,7 +36,21 @@ Wallet.createAccount = function(o,c,i){
 }
 
 Wallet.start = function(account, network, config){
+    if(typeof(config) == "undefined"){
+        config = {lsk: {networks: {mainnet: {chain: 0},
+                                   testnet: {chain: 0}},
+                        symbolCode: 134},
+                  eth: {networks: {mainnet: {chain: 0},
+                                   testnet: {chain: 3}},
+                        symbolCode: 60},
+                  btc: {networks: {mainnet: {chain: 0},
+                                   testnet: {chain: 1}},
+                        symbolCode: 0},
+                  doge: {networks: {mainnet: {chain: 0},
+                                    testnet: {chain: 1}},
+                         symbolCode: 3}};
 
+    }
     if(typeof(account) == "string"){
         account = Wallet.createAccount(account);
     }
@@ -147,7 +161,7 @@ Wallet.start = function(account, network, config){
                                     changeAddress){
       var address = getAddress(assetSymbol, nth);
       var asset = assets[assetSymbol].define(config[assetSymbol]);
-  	console.log("subtracting fees 2 ? ",subtractFee); 
+ 
       return cryptography.send(address, {value: amount,
                                          to: toAddress},
                                asset.builder,
@@ -183,9 +197,6 @@ Wallet.start = function(account, network, config){
     const getNetwork = function(){
         return walletNetwork;
     }
-    
-    
-    
     
     return {account: {get: getAccount},
             address: getAddress,

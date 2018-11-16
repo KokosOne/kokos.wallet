@@ -8,9 +8,7 @@ module.exports = function(type, url, data, pubKey, dataJson){
             headers["x-pub-key"] = pubKey;
         }
 
-      //  url = location.protocol + "//" + location.host + url;
-     //   url = window.location.protocol + "//" + window.location.host + "1"+url;//+".json";
-      //  url = url+".json";
+     
         if(!dataJson){
             request({url: url,
                      method: type,
@@ -18,7 +16,7 @@ module.exports = function(type, url, data, pubKey, dataJson){
                      form: data,
                      headers: headers},
                     function(error, response, body){
-                        // console.log(type+" "+url+" "+JSON.stringify(data)+" .. R: "+body);
+                     
                         
                         if(error){
                             return reject(error);
@@ -29,8 +27,7 @@ module.exports = function(type, url, data, pubKey, dataJson){
                             info = JSON.parse(body);
                         }catch(e){ info = body;
                                    isJson = false; }
-                        //console.log(url);
-                        //console.log(info);
+                     
                         resolve(info, isJson);
                     });
         }else{
@@ -42,7 +39,7 @@ module.exports = function(type, url, data, pubKey, dataJson){
                      json: true,
                      headers: headers},
                     function(error, response, body){
-                        //console.log(type+" "+url+" "+JSON.stringify(data)+" .. R: "+JSON.stringify(body));
+                     
                         
                         if(error){
                             return reject(error);

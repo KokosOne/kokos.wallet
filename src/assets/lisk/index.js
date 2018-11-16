@@ -87,7 +87,7 @@ function define(options){
             if(lisk.cryptography.verifyData(hash, signature1, getPublicKey(from.node.privateKey, false).toString("hex"))){
                 resolve(fullySigned);
             }else{
-                console.log("WRONG SIGNATURE");
+            
                 reject({error: "wrong signature"});
             }
         });

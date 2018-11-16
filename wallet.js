@@ -1,8 +1,7 @@
 const Wallet = require("./src/index.js");
 const BigNumber = require("bignumber.js");
-var config = require("./config.js");
 var account = Wallet.createAccount("apology museum lens use plate tennis analyst label error they height jar",0, 0);
-var wallet = Wallet.start(account,"testnet",config); // switch to "mainnet" if you want to use read coins
+var wallet = Wallet.start(account,"testnet"); // switch to "mainnet" if you want to use read coins
 
 console.log(wallet.getNetwork());
 /* address on position 0 of derived keys for specific coin */

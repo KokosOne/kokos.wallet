@@ -44,7 +44,7 @@ function define(options){
                                {messagePrefix: '\x18Dogecoin Signed Message:\n'});
     bn.mainnet = Object.assign(bitcoin_network.mainnet,
                                {messagePrefix: '\x18Dogecoin Signed Message:\n'});
-    	console.log(bitcoin_network.mainnet.versions);
+  
 	var bnjs = {testnet: bn.testnet.toBitcoinJS(),
                 mainnet: bn.mainnet.toBitcoinJS()};
     
@@ -140,7 +140,7 @@ function define(options){
                             }
                             var n = getNetworkConf(from.network);
                           
-                          //  console.log("building transaction");
+                   
                             var tx = new bitcoin.TransactionBuilder(n);
               		    tx.setVersion(1);
 			    for(var i in txIns){
@@ -159,7 +159,7 @@ function define(options){
                             }
                             resolve(tx);
                         }).catch(function(e){
-                            console.log(e);
+                       
                             reject(e);
                         });
                     

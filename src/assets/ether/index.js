@@ -8,21 +8,21 @@ function generateNonceOffset(){
     return function(address, dec, reset){
         if(reset){
             addresses = {};
-            console.log("nonce offset resetted for all addresses");
+        
             return;
         }
              if(typeof(addresses[address]) == "undefined"){
                  addresses[address] = -1;
              }
-	   console.log(addresses);
+	
         if(dec){
             
             addresses[address] = addresses[address] - 1;
-            console.log("decreasing nonce offset", address,addresses[address]);
+         
         }else{
             
             addresses[address] = addresses[address] + 1;
-            console.log("increasing nonce offset", address, addresses[address]);
+           
         }
         if(addresses[address] < -1){
             addresses[address] = -1;
@@ -70,7 +70,7 @@ function define(options){
             var codeP = "0x"; //net.getCode(txData.to, from.network);
             Promise.all([gasPriceP, codeP, gasP])
                 .then(function(results){
-              	console.log("subtracting fees 4? ", subtractFee); 
+            
                     var [gasPrice, code, gas] = results;
                     gasPrice = new BigNumber(gasPrice.gasprice);
                     gasPrice = gasPrice.multipliedBy(1.5);
@@ -136,23 +136,23 @@ function define(options){
             }).
             catch(function(){
                 noncer[from.network](from.address, true);
-                console.log("error sending", from, tx,  arguments);
+             
                 resolve({err: "possible",
                          info: arguments});
             });
     });
 }
   return {publicKeyFromPrivateKey: ethUtil.privateToPublic,
-           addressFromPublicKey: ethUtil.publicToAddress,
-           toAddress: ethUtil.toChecksumAddress,
-           builder: buildEthTransaction,
-           transactionHasher: transactionHasher,
-           signWithPrivateKey: signer,
+          addressFromPublicKey: ethUtil.publicToAddress,
+          toAddress: ethUtil.toChecksumAddress,
+          builder: buildEthTransaction,
+          transactionHasher: transactionHasher,
+          signWithPrivateKey: signer,
           send: sender,
           interact: interact,
-           symbolCode: symbolCode,
-           networks: networks,
-           depth: depth}
+          symbolCode: symbolCode,
+          networks: networks,
+          depth: depth}
 }
 module.exports = {define: define,
                   interaction: interaction};

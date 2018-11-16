@@ -166,7 +166,7 @@ function send(address, transaction,
             signWithPrivateKey, sender,
             subtractFee, processingFee,
             changeAddress){
-	console.log("subtracting fee 3 ? ", subtractFee);
+
   return new Promise(function(resolve, reject){
     sign(address, transaction,
          builder, transactionHasher,
