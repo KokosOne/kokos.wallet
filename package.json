@@ -1,6 +1,6 @@
 {
   "name": "@kokosapiens/kokos.wallet",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "main": "src/index.js",
   "author": "robert@kokos",
   "description": "Kokos multi wallet library. Manage addresses and transfer coins on multiple digital cryptographic blockchains.",
@@ -10,7 +10,6 @@
     "bignumber.js": "latest",
     "bip39": "^2.5.0",
     "bitcoinjs-lib": "^4.0.1",
-    "block_io": "^1.0.9",
     "body-parser": "latest",
     "bookshelf": "latest",
     "bytebuffer": "^5.0.1",
