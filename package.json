@@ -1,9 +1,9 @@
 {
   "name": "@kokosapiens/kokos.wallet",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "main": "src/index.js",
   "author": "robert@kokos",
-  "description": "Kokos multi wallet library. Manage addresses for multiple digital cryptographic assets.",
+  "description": "Kokos multi wallet library. Manage addresses and transfer coins on multiple digital cryptographic blockchains.",
   "dependencies": {
     "base-64": "latest",
     "bignumber.js": "latest",
@@ -19,6 +19,7 @@
     "cors": "latest",
     "crypto-js": "latest",
     "dotenv": "^6.0.0",
+    "request": "latest",
     "ed25519-hd-key": "^1.0.0",
     "errorhandler": "latest",
     "ethereumjs-abi": "^0.6.5",
