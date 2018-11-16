@@ -25,25 +25,11 @@ npm i --save @kokosapiens/kokos.wallet
 
 ```javascript
 var Wallet = require("@kokosapiens/kokos.wallet");
-
-const config = {lsk: {networks: {mainnet: {chain: 0},
-                                 testnet: {chain: 0}},
-                      symbolCode: 134},
-                eth: {networks: {mainnet: {chain: 0},
-                                 testnet: {chain: 3}},
-                      symbolCode: 60},
-                btc: {networks: {mainnet: {chain: 0},
-                                testnet: {chain: 1}},
-                      symbolCode: 0},
-                doge: {networks: {mainnet: {chain: 0},
-                                  testnet: {chain: 1}},
-                       symbolCode: 3}};
-
 var account = Wallet.createAccount(null, 0, 0);
 console.log("account created");
 console.log(account.passphrase);
 
-var wallet = Wallet.start(account, "mainnet", config);
+var wallet = Wallet.start(account, "mainnet");
 
 console.log("Addresses on position 0 for supported assets");
 console.log("btc",wallet.address("btc",0).address);
