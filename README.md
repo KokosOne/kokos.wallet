@@ -3,7 +3,7 @@
 A multicoin hd wallet library.
 
 Manage funds on multiple networks.
-Uses `blockchain.api.kokos.one` as a single trusted gateway to multiple networks.
+Uses `blockchain.api.kokos.one` as a single trusted gateway to multiple networks. Requests limited to 5 per second per IP.
 
 ### provides
 - One single master key for addresses on multiple blockchains. 
@@ -20,6 +20,54 @@ Kokos.wallet is using [BIP44]: https://github.com/bitcoin/bips/blob/master/bip-0
 
 ## Use it as a library
 See [wallet.js]: https://github.com/kokosone/kokos.wallet/blob/master/wallet.js
+
+npm i --save @kokosapiens/kokos.wallet
+
+```javascript
+var Wallet = require("@kokosapiens/kokos.wallet");
+
+const config = {lsk: {networks: {mainnet: {chain: 0},
+                                 testnet: {chain: 0}},
+                      symbolCode: 134},
+                eth: {networks: {mainnet: {chain: 0},
+                                 testnet: {chain: 3}},
+                      symbolCode: 60},
+                btc: {networks: {mainnet: {chain: 0},
+                                testnet: {chain: 1}},
+                      symbolCode: 0},
+                doge: {networks: {mainnet: {chain: 0},
+                                  testnet: {chain: 1}},
+                       symbolCode: 3}};
+
+var account = Wallet.createAccount(null, 0, 0);
+console.log("account created");
+console.log(account.passphrase);
+
+var wallet = Wallet.start(account, "mainnet", config);
+
+console.log("Addresses on position 0 for supported assets");
+console.log("btc",wallet.address("btc",0).address);
+console.log("doge ",wallet.address("doge",0).address);
+console.log("eth ",wallet.address("eth",0).address);
+console.log("lsk ",wallet.address("lsk",0).address);
+
+/* btc balance of address on position 0 */
+wallet.positionBalance("btc",0).then(console.log).catch(console.log);
+        
+```
+------
+
+```
+wallet.address(asset,position);
+
+wallet.listAddress(asset, fromPosition, toPosition);
+
+wallet.positionBalance(asset, position) // returns a Promise
+
+wallet.sendFromPosition(asset, position, amount, toAddress, subtractFee, processingFee, changeAddress); // returns a promise
+
+```
+
 
 ## Running http server
 
