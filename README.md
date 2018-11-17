@@ -18,15 +18,15 @@ Supported networks: BTC, ETH, LSK, DOGE
 ## How are addresses generated?
 Kokos.wallet is using [BIP44]: https://github.com/bitcoin/bips/blob/master/bip-0044.mediawiki [specification]: https://github.com/satoshilabs/slips/blob/master/slip-0044.md for each supported coin.
 
-[more on]: https://github.com/kokosone/kokos.wallet/blob/master/src/cryptography/index.js
+[more on]: https://github.com/kokosone/wallet/blob/master/src/cryptography/index.js
 
 ## Use it as a library
-See [wallet.js]: https://github.com/kokosone/kokos.wallet/blob/master/wallet.js
+See [wallet.js]: https://github.com/kokosone/wallet/blob/master/wallet.js
 
-npm i --save @kokosapiens/kokos.wallet
+npm i --save @kokosapiens/wallet
 
 ```javascript
-var Wallet = require("@kokosapiens/kokos.wallet");
+var Wallet = require("@kokosapiens/wallet");
 
 Wallet.startHttpServer(3123);
 
@@ -63,7 +63,7 @@ wallet.sendFromPosition(asset, position, amount, toAddress, subtractFee, process
 ## Running http server
 
 
-var Wallet = require("@kokosapiens/kokos.wallet");
+var Wallet = require("@kokosapiens/wallet");
 
 Wallet.startHttpServer(3123);
 This will start listening on port 3123 ( port 3000 is used as default).

@@ -1,6 +1,6 @@
 {
   "name": "@kokosapiens/wallet",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "main": "src/index.js",
   "author": "robert@kokos",
   "description": "Kokos multi wallet library. Manage addresses and transfer coins on multiple digital cryptographic blockchains.",
