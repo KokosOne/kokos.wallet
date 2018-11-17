@@ -74,7 +74,7 @@ When the account is generated the api returns the account reference ID and a 12 
 
 
 Available http API methods
-
+```
 GET /api/generate
 responds with an accountHash reference string and a 12 words password.
 
@@ -91,8 +91,8 @@ POST /:accountHash/send/:network/:asset/:position
                   subtractfee: "0"}
 subtractfee: 0 - it will send the amount specified in `amount`
 subtractfee: 1 - it will subtract network transfer fees from the given `amount`
-
-#LICENSE
+```
+# LICENSE
 
 This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 
