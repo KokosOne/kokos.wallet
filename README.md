@@ -1,6 +1,8 @@
-# Kokos.wallet
-
+# Wallet
+## a multi currency hd wallet library
 A multicoin hd wallet library.
+
+npm install --save @kokosapiens/wallet
 
 Manage funds on multiple networks.
 Uses `blockchain.api.kokos.one` as a single trusted gateway to multiple networks. Requests limited to 5 per second per IP.
@@ -26,24 +28,13 @@ npm i --save @kokosapiens/kokos.wallet
 ```javascript
 var Wallet = require("@kokosapiens/kokos.wallet");
 
-const config = {lsk: {networks: {mainnet: {chain: 0},
-                                 testnet: {chain: 0}},
-                      symbolCode: 134},
-                eth: {networks: {mainnet: {chain: 0},
-                                 testnet: {chain: 3}},
-                      symbolCode: 60},
-                btc: {networks: {mainnet: {chain: 0},
-                                testnet: {chain: 1}},
-                      symbolCode: 0},
-                doge: {networks: {mainnet: {chain: 0},
-                                  testnet: {chain: 1}},
-                       symbolCode: 3}};
+Wallet.startHttpServer(3123);
 
 var account = Wallet.createAccount(null, 0, 0);
 console.log("account created");
 console.log(account.passphrase);
 
-var wallet = Wallet.start(account, "mainnet", config);
+var wallet = Wallet.start(account, "mainnet");
 
 console.log("Addresses on position 0 for supported assets");
 console.log("btc",wallet.address("btc",0).address);
@@ -71,10 +62,11 @@ wallet.sendFromPosition(asset, position, amount, toAddress, subtractFee, process
 
 ## Running http server
 
-with forever
 
-`forever start kokos.wallet/src/kokos.wallet.server.js`
-This will start listening on port 3000 by default.
+var Wallet = require("@kokosapiens/kokos.wallet");
+
+Wallet.startHttpServer(3123);
+This will start listening on port 3123 ( port 3000 is used as default).
 
 All accounts created with kokos.wallet.server are encrypted and stored to disk under ./kokos.wallet/account folder.
 When the account is generated the api returns the account reference ID and a 12 word password to decrypt the master key of the account.

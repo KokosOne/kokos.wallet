@@ -1,6 +1,6 @@
 {
-  "name": "@kokosapiens/kokos.wallet",
-  "version": "0.1.5",
+  "name": "@kokosapiens/wallet",
+  "version": "0.2.0",
   "main": "src/index.js",
   "author": "robert@kokos",
   "description": "Kokos multi wallet library. Manage addresses and transfer coins on multiple digital cryptographic blockchains.",
@@ -55,14 +55,14 @@
   "license": "GPL-3.0-or-later",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kokosone/kokos.wallet.git"
+    "url": "git+https://github.com/kokosone/wallet.git"
   },
   "keywords": [
     "hs",
     "wallet"
   ],
   "bugs": {
-    "url": "https://github.com/kokosone/kokos.wallet/issues"
+    "url": "https://github.com/kokosone/wallet/issues"
   },
-  "homepage": "https://github.com/kokosone/kokos.wallet#readme"
+  "homepage": "https://github.com/kokosone/wallet#readme"
 }

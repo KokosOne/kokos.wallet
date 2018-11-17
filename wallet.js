@@ -1,4 +1,9 @@
 const Wallet = require("./src/index.js");
+
+Wallet.startHttpServer(3123);
+
+
+
 const BigNumber = require("bignumber.js");
 var account = Wallet.createAccount("apology museum lens use plate tennis analyst label error they height jar",0, 0);
 var wallet = Wallet.start(account,"testnet"); // switch to "mainnet" if you want to use read coins

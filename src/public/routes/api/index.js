@@ -1,9 +1,9 @@
 var express = require("express");
 var Wallet = require("../../../index.js");
 var crypto = require('crypto');
-var disk = require("../../../disk/index.js");
+var Disk = require("../../../disk/index.js");
 var BigNumber = require("bignumber.js");
-function define(config, rootDir){
+function define(rootDir){
 
     var router = express.Router();
 
@@ -13,7 +13,7 @@ function define(config, rootDir){
                       lsk: 1e8,
                       doge: 1e8,
                       btc: 1e8};
-
+    var disk = Disk({pathToAccountStorage: rootDir+"/account"});
     function numberToOut(asset, n){
         var x = new BigNumber(n);
         x = x.dividedBy(assetsDecs[asset]);
@@ -36,13 +36,13 @@ function define(config, rootDir){
               ){
                 disk.readAccount(accountHash, accountPassword)
                     .then(function(account){
-                        var theWallet = Wallet.start(account, network, config);
+                        var theWallet = Wallet.start(account, network);
                         if(typeof(memory[accountHash]) == "undefined"){
                             memory[accountHash] = {};
                         }
                         var accountX = Wallet.createAccount(account.passphrase, 0, 0);
                         
-                        memory[accountHash][network] = Wallet.start(accountX, network, config);
+                        memory[accountHash][network] = Wallet.start(accountX, network);
                         memory[accountHash].password = hash256(accountPassword);
                         resolve(memory[accountHash][network]);
                     }).catch(function(){

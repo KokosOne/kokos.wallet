@@ -1,6 +1,8 @@
 const assets = require("./assets");
 const cryptography = require("./cryptography");
 const BigNumber = require("bignumber.js");
+const ServerFn = require("./server/http.js");
+
 const Wallet = {};
 
 Wallet.createAccount = function(o,c,i){
@@ -197,6 +199,10 @@ Wallet.start = function(account, network, config){
     const getNetwork = function(){
         return walletNetwork;
     }
+
+    
+   
+
     
     return {account: {get: getAccount},
             address: getAddress,
@@ -209,6 +215,52 @@ Wallet.start = function(account, network, config){
             sendFromPosition: sendFromPosition};
 }
 
+ var server = null;
+const startHttpServer = function(port, options){
+    var viewsPath = __dirname + "/../template/";
+    var staticPath = __dirname + "/../static/";
+    var routesPath = __dirname + "/./public/routes";
+    var rootPath = __dirname + "/./..";
+    if(typeof(options) != "undefined"
+       && typeof(options.paths) != "undefined"
+       && typeof(options.paths.views) != "undefined"){
+        viewsPath = options.paths.views;
+    }
+    if(typeof(options) != "undefined"
+       && typeof(options.paths) != "undefined"
+       && typeof(options.paths.root) != "undefined"){
+        rootPath = options.paths.root;
+    }
+    if(typeof(options) != "undefined"
+       && typeof(options.paths) != "undefined"
+       && typeof(options.paths.static) != "undefined"){
+        staticPath = options.paths.static;
+        }
+    if(typeof(options) != "undefined"
+       && typeof(options.paths) != "undefined"
+       && typeof(options.paths.routes) != "undefined"){
+        routesPath = options.paths.routes;
+    }
+    if(typeof(port) == "undefined"){
+        port = 3000;
+    }
+    var afterServerStart = function(){
+        console.log("afterServerStart");
+    }
+    if(typeof(options) != "undefined"
+       && typeof(options.afterServerStart) != "undefined"){
+        afterServerStart = options.afterServerStart;
+    }
+    server = ServerFn({path: {views: viewsPath,
+                              static: staticPath},
+                       start: true,
+                       port: port,
+                       routes: require(routesPath)(rootPath),
+                       afterServerStart: afterServerStart});
+    return server;
+}
+
+Wallet.startHttpServer = startHttpServer;
 
 
 module.exports = Wallet;
