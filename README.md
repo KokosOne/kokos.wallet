@@ -18,10 +18,10 @@ Supported networks: BTC, ETH, LSK, DOGE
 ## How are addresses generated?
 Kokos.wallet is using [BIP44]: https://github.com/bitcoin/bips/blob/master/bip-0044.mediawiki [specification]: https://github.com/satoshilabs/slips/blob/master/slip-0044.md for each supported coin.
 
-[more on]: https://github.com/kokosone/wallet/blob/master/src/cryptography/index.js
+[more on]: https://github.com/kokosapiens/wallet/blob/master/src/cryptography/index.js
 
 ## Use it as a library
-See [wallet.js]: https://github.com/kokosone/wallet/blob/master/wallet.js
+See [wallet.js]: https://github.com/kokosapiens/wallet/blob/master/wallet.js
 
 npm i --save @kokosapiens/wallet
 
