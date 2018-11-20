@@ -78,6 +78,24 @@ function define(rootDir){
         });
     });
 
+    
+    router.post("/:hash/decrypt/:network",
+               function(request, response, next){
+                   var accountHash = request.params.hash;
+                   var network = request.params.network;
+                   var accountPassword = request.body.password;
+                   getWallet(accountHash, accountPassword, network)
+                       .then(function(wallet){
+                          
+                           response.json({account: accountHash,
+                                          network: network,
+                                          passphrase: wallet.passphrase});
+                       })
+                       .catch(function(e){
+                           response.json(e);
+                       });
+               });
+    
     router.post("/:hash/address/:network/:asset/:position",
                function(request, response, next){
                    var accountHash = request.params.hash;
