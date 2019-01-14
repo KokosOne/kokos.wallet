@@ -16,7 +16,7 @@ Uses `blockchain.api.kokos.one` as a single trusted gateway to multiple networks
 Supported networks: BTC, ETH, LSK, DOGE
 
 ## How are addresses generated?
-Kokos.wallet is using [BIP44]: https://github.com/bitcoin/bips/blob/master/bip-0044.mediawiki [specification]: https://github.com/satoshilabs/slips/blob/master/slip-0044.md for each supported coin.
+Kokosapiens.wallet is using [BIP44]: https://github.com/bitcoin/bips/blob/master/bip-0044.mediawiki [specification]: https://github.com/satoshilabs/slips/blob/master/slip-0044.md for each supported coin.
 
 [more on]: https://github.com/kokosapiens/wallet/blob/master/src/cryptography/index.js
 
